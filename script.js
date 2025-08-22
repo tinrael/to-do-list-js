@@ -39,3 +39,13 @@ function displayTasks() {
         `
     });
 }
+
+function checkTask(taskId) {
+    tasks = tasks.map((task, index) => (
+        {
+            ...task,
+            checked: index === taskId ? !task.checked : task.checked,
+        }
+    ));
+    displayTasks();
+}
