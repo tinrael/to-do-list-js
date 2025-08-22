@@ -11,6 +11,13 @@ form.addEventListener("submit", function(event) {
     displayTasks();
 });
 
+tasksElement.addEventListener("click", function(event) {
+    if (event.target.parentNode.className === "task") {
+        const taskId = Number(event.target.parentNode.id);
+        console.log(taskId);
+    }
+});
+
 function saveTask() {
     if (input.value === "") {
         alert("The input is empty.")
