@@ -17,5 +17,6 @@ function saveTask() {
             value: input.value,
             checked: false,
         });
+        input.value = "";
     }
 }
