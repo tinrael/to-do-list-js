@@ -7,7 +7,7 @@ let tasks = [];
 
 form.addEventListener("submit", function(event) {
     event.preventDefault();
-    saveTask();
+    addTask();
     displayTasks();
 });
 
@@ -18,7 +18,7 @@ tasksElement.addEventListener("click", function(event) {
     }
 });
 
-function saveTask() {
+function addTask() {
     if (input.value === "") {
         alert("The input is empty.")
     } else if (tasks.some(task => task.value.toLocaleUpperCase() === input.value.toLocaleUpperCase())) {
