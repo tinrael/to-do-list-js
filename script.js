@@ -64,3 +64,9 @@ function editTask(taskId) {
     input.value = tasks[taskId].value;
     taskIdToEdit = taskId;
 }
+
+function deleteTask(taskId) {
+    tasks = tasks.filter((task, index) => index !== taskId);
+    taskIdToEdit = -1;
+    displayTasks();
+}
