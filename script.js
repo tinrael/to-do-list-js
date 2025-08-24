@@ -21,7 +21,7 @@ tasksElement.addEventListener("click", function(event) {
 function saveTask() {
     if (input.value === "") {
         alert("The input is empty.")
-    } else if (tasks.some(task => task.value.toUpperCase() === input.value.toUpperCase())) {
+    } else if (tasks.some(task => task.value.toLocaleUpperCase() === input.value.toLocaleUpperCase())) {
         alert("The task already exists.");
     } else {
         tasks.push({
