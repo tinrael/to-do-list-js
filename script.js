@@ -5,6 +5,8 @@ const tasksElement = document.getElementById("tasks");
 
 let tasks = [];
 
+let taskIdToEdit = -1;
+
 form.addEventListener("submit", function(event) {
     event.preventDefault();
     addTask();
@@ -24,10 +26,17 @@ function addTask() {
     } else if (tasks.some(task => task.value.toLocaleUpperCase() === input.value.toLocaleUpperCase())) {
         alert("The task already exists.");
     } else {
-        tasks.push({
-            value: input.value,
-            checked: false,
-        });
+        if (taskIdToEdit >= 0) {
+            tasks = tasks.map((task, index) =>
+                index === taskIdToEdit ? { ...task, value: input.value } : task
+            );
+            taskIdToEdit = -1;
+        } else {
+            tasks.push({
+                value: input.value,
+                checked: false,
+            });
+        }
         input.value = "";
     }
 }
@@ -49,4 +58,9 @@ function toggleTask(taskId) {
         index === taskId ? { ...task, checked: !task.checked } : task
     );
     displayTasks();
+}
+
+function editTask(taskId) {
+    input.value = tasks[taskId].value;
+    taskIdToEdit = taskId;
 }
