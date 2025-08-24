@@ -47,7 +47,7 @@ function displayTasks() {
     });
 }
 
-function checkTask(taskId) {
+function toggleTask(taskId) {
     tasks = tasks.map((task, index) => (
         {
             ...task,
