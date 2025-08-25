@@ -47,7 +47,6 @@ function addTask() {
 function displayTasks() {
     tasksElement.innerHTML = tasks.map((task, index) =>
         `<div id="${index}" class="task">
-            <i class="bi bi-"></i>
             <i class="bi bi-${task.checked ? 'check-circle-fill' : 'circle'}"></i>
             <p class="${task.checked ? 'checked' : ''}">${task.value}</p>
             <i class="bi bi-pencil-square"></i>
