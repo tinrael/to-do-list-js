@@ -49,7 +49,7 @@ function displayTasks() {
         `<div id="${index}" class="task">
             <i class="bi bi-"></i>
             <i class="bi bi-${task.checked ? 'check-circle-fill' : 'circle'}"></i>
-            <p>${task.value}</p>
+            <p class="${task.checked ? 'checked' : ''}">${task.value}</p>
             <i class="bi bi-pencil-square"></i>
             <i class="bi bi-trash"></i>
         </div>`
