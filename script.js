@@ -19,7 +19,20 @@ form.addEventListener("submit", function(event) {
 tasksElement.addEventListener("click", function(event) {
     if (event.target.parentNode.className === "task") {
         const taskId = Number(event.target.parentNode.id);
-        console.log(taskId);
+        const action = event.target.dataset.action;
+        switch (action) {
+            case "toggle":
+                toggleTask(taskId);
+                break;
+            case "edit":
+                editTask(taskId);
+                break;
+            case "delete":
+                deleteTask(taskId);
+                break;
+            default:
+                throw new Error("Unknown action: " + action);
+        }
     }
 });
 
@@ -47,10 +60,10 @@ function addTask() {
 function displayTasks() {
     tasksElement.innerHTML = tasks.map((task, index) =>
         `<div id="${index}" class="task">
-            <i class="bi bi-${task.checked ? 'check-circle-fill' : 'circle'}"></i>
-            <p class="${task.checked ? 'checked' : ''}">${task.value}</p>
-            <i class="bi bi-pencil-square"></i>
-            <i class="bi bi-trash"></i>
+            <i class="bi bi-${task.checked ? 'check-circle-fill' : 'circle'}" data-action="toggle"></i>
+            <p class="${task.checked ? 'checked' : ''}" data-action="toggle">${task.value}</p>
+            <i class="bi bi-pencil-square" data-action="edit"></i>
+            <i class="bi bi-trash" data-action="delete"></i>
         </div>`
     ).join("");
 }
