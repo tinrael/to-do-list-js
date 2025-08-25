@@ -3,13 +3,16 @@ const input = document.getElementById("input");
 
 const tasksElement = document.getElementById("tasks");
 
-let tasks = [];
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 let taskIdToEdit = -1;
+
+displayTasks();
 
 form.addEventListener("submit", function(event) {
     event.preventDefault();
     addTask();
+    localStorage.setItem("tasks", JSON.stringify(tasks));
     displayTasks();
 });
 
@@ -57,6 +60,7 @@ function toggleTask(taskId) {
     tasks = tasks.map((task, index) =>
         index === taskId ? { ...task, checked: !task.checked } : task
     );
+    localStorage.setItem("tasks", JSON.stringify(tasks));
     displayTasks();
 }
 
@@ -68,5 +72,6 @@ function editTask(taskId) {
 function deleteTask(taskId) {
     tasks = tasks.filter((task, index) => index !== taskId);
     taskIdToEdit = -1;
+    localStorage.setItem("tasks", JSON.stringify(tasks));
     displayTasks();
 }
