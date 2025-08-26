@@ -1,0 +1,20 @@
+.checked {
+    text-decoration: line-through;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+}
+
+.task * {
+    margin-right: 5px;
+}
+
+.bi-pencil-square {
+    color: green;
+}
+
+.bi-trash {
+    color: red;
+}
